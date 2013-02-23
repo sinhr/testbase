@@ -20,13 +20,11 @@ public class QuestionDAOImpl implements QuestionDAO {
     @SuppressWarnings("unchecked")
     public List<Question> listQuestion() {
 
-        return sessionFactory.getCurrentSession().createQuery("from Question")
-            .list();
+        return sessionFactory.getCurrentSession().createQuery("from Question").list();
     }
 
     public void removeQuestion(Integer id) {
-    	Question question = (Question) sessionFactory.getCurrentSession().load(
-                Question.class, id);
+    	Question question = (Question) sessionFactory.getCurrentSession().load(Question.class, id);
         if (null != question) {
             sessionFactory.getCurrentSession().delete(question);
         }
